@@ -37,6 +37,7 @@ const registerUser = async (require, response) => {
     }
 }
 
+
 const login = async (require, response) => {
     const { email, password } = require.body;
 
@@ -65,6 +66,7 @@ const login = async (require, response) => {
         const { password: _, ...formattedUser } = user.rows[0];
 
         return response.status(200).json({ user: formattedUser, token });
+
     } catch (error) {
         return response.status(500).json(error.message);
     }
