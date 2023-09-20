@@ -32,6 +32,4 @@ routes.post('/transaction', registerTransaction);
 routes.put('/transaction/:id', editTransaction);
 routes.delete('/transaction/:id', deleteTransaction);
 
-
-
 module.exports = routes;

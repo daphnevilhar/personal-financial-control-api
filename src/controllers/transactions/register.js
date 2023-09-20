@@ -15,7 +15,7 @@ const registerTransaction = async (require, response) => {
         const verifyCategoryId = await pool.query(`SELECT * FROM categories WHERE id = $1;`, [categorie_id]);
 
         if (verifyCategoryId.rowCount === 0) {
-            return response.status(404).json({ message: `This category id doesn't exist` })
+            return response.status(404).json({ message: `Este id de categoria não existe` })
         }
 
         const transaction = await pool.query(`INSERT INTO transactions

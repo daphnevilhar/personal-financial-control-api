@@ -9,7 +9,7 @@ const detailTransaction = async (require, response) => {
         const transaction = await pool.query(`SELECT * FROM transactions WHERE user_id = $1 AND id = $2;`, [userId, id]);
 
         if (transaction.rowCount === 0) {
-            return response.status(404).json({ message: 'Transaction not found' })
+            return response.status(404).json({ message: 'Transação não encontrada' })
         }
 
         return response.status(200).json(transaction.rows);
