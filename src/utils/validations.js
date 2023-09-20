@@ -1,4 +1,4 @@
-const validateFields = async (description, value, date, categories_id) => {
+const validateFields = async (description, value, date, category_id) => {
 
     if (!description) {
         throw { statusCode: 400, message: "A descrição é obrigatória" };
@@ -12,7 +12,7 @@ const validateFields = async (description, value, date, categories_id) => {
         throw { statusCode: 400, message: 'A data é obrigatória' };
     };
 
-    if (!categories_id) {
+    if (!category_id) {
         throw { statusCode: 400, message: 'A categoria_id é obrigatória' };
     };
 };

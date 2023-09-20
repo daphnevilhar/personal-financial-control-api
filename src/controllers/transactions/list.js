@@ -2,7 +2,7 @@ const pool = require('../../connection');
 
 const listTransactions = async (require, response) => {
     const { filter } = require.query;
-
+    console.log(filter)
     try {
         if (filter) {
             let list = [];
@@ -25,9 +25,9 @@ const listTransactions = async (require, response) => {
             transactions.user_id,
             transactions.category_id,
             categories.description AS category_name FROM transactions 
-            LEFT JOIN categories ON transactions.category_id = category.id 
+            LEFT JOIN categories ON transactions.category_id = categories.id 
             WHERE transactions.user_id = $1
-            AND categories.description = $2;`, [require.loggedUser.id, list[i]]);
+            AND categories.description ILIKE $2;`, [require.loggedUser.id, list[i]]);
                 for (let a = 0; a < filterTransactions.rowCount; a++) {
                     result.push(filterTransactions.rows[a]);
                 }
