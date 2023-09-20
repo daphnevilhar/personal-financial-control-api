@@ -1,6 +1,5 @@
 const pool = require('../../connection');
 
-
 const filterTransactionsByCategory = async (require, response) => {
     /*const { filter } = require.query;
     const filterCategorie = (`SELECT * FROM categories WHERE description ilike $1;`, [filter]);
