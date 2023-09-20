@@ -2,19 +2,56 @@
 
 # Desafio Módulo 3 - Backend
 
-## Como entregar?
+RESTful API que permita:
+<table>
+  <thead>
+    <tr align="left">
+      <th>Nº</th>
+      <th>Etapas</th>
+      <th>Materiais de Apoio</th>
+    </tr>
+  </thead>
+  <tbody align="left">
+    <tr>
+      <td>01</td>
+      <td>Introdução ao Lab</td>
+      <td align="center">
+        <a href="">
+           <img align="center" alt="Material de Apoio" src="https://img.shields.io/badge/Ver%20Material-30A3DC?style=for-the-badge">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>02</td>
+      <td>Formas de Contribuir num Projeto Open Source</td>
+      <td align="center">
+        <a href="">
+           <img align="center" alt="Material de Apoio" src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>03</td>
+      <td>Desenvolvendo e Enviando uma Contribuição</td>
+      <td align="center">
+        <a href="">
+           <img align="center" alt="Material de Apoio" src="https://img.shields.io/badge/Ver%20Material-30A3DC?style=for-the-badge">
+        </a>
+      </td>    
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>Dicas e Materiais de Apoio</td>
+      <td align="center">
+        <a href="">
+           <img align="center" alt="Material de Apoio" src="https://img.shields.io/badge/Ver%20Material-E94D5F?style=for-the-badge">
+        </a>
+      </td>    
+    </tr>
+  </tbody>
+  <tfoot></tfoot>
+</table>
 
-- [ ] Faça o fork desse repositório para o seu GitHub
-- [ ] Clone o seu repositório em sua máquina
-- [ ] Desenvolva seu projeto, fazendo commits a cada alteração e push
-- [ ] Crie um PR (pull request)
-- [ ] Envie o link do pull request que você criou na plataforma da Cubos
-
-### ⚠️ Importante: Se o pull request não for criado e enviado na plataforma o feedback não será fornecido e constará como não entregue
-
-## Descrição do desafio
-
-Seu papel é construir uma RESTful API que permita:
 
 - Cadastrar Usuário
 - Fazer Login
@@ -29,28 +66,9 @@ Seu papel é construir uma RESTful API que permita:
 - Obter extrato de transações
 - [Extra] Filtrar transações por categoria
 
-**Importante: Lembre-se sempre que cada usuário só pode ver e manipular seus próprios dados e suas próprias transações. Não atender a este pré-requisito é uma falha de segurança gravíssima!**
-
-**Importante 2: O diretório ".github" e seu conteúdo não podem ser alterados e muito menos excluídos**
-
-**Importante 3: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
-
-**Importante 4: O link de acesso a esta API se encontra no final deste README. Este link é somente para testes!**
-
-**Exemplo:**
-
-```javascript
-// Quando é informado um id de transação que não existe:
-// HTTP Status 404
-{
-    "mensagem": "Transação não encontrada!"
-}
-```
+**Importante: Cada usuário só pode ver e manipular seus próprios dados e suas próprias transações.**
 
 ## **Banco de dados**
-
-Você precisa criar um Banco de Dados PostgreSQL chamado `dindin` contendo as seguintes tabelas e colunas:  
-**ATENÇÃO! Os nomes das tabelas e das colunas a serem criados devem seguir exatamente os nomes listados abaixo.**
 
 - usuarios
   - id
@@ -68,10 +86,6 @@ Você precisa criar um Banco de Dados PostgreSQL chamado `dindin` contendo as se
   - categoria_id
   - usuario_id
   - tipo
-
-**IMPORTANTE: Deverá ser criado no projeto o(s) arquivo(s) SQL que deverá ser o script que cria as tabelas corretamente.**
-
-As categorias a seguir precisam ser previamente cadastradas para que sejam listadas no endpoint de listagem das categorias.
 
 ## **Categorias**
 
@@ -98,28 +112,10 @@ As categorias a seguir precisam ser previamente cadastradas para que sejam lista
 ## **Requisitos obrigatórios**
 
 - A API a ser criada deverá acessar o banco de dados a ser criado "dindin" para persistir e manipular os dados de usuários, categorias e transações utilizados pela aplicação.
-- O campo `id` das tabelas no banco de dados deve ser auto incremento, chave primária e não deve permitir edição uma vez criado.
-- Seu código deverá estar organizado, delimitando as responsabilidades de cada arquivo adequadamente. Ou seja, é esperado que ele tenha, no mínimo:
-  - Um arquivo index.js
-  - Um arquivo conexao.js
-  - Um arquivo de rotas
-  - Um pasta com controladores
+
 - Qualquer valor monetário deverá ser representado em centavos (Ex.: R$ 10,00 reais = 1000)
-- Evite códigos duplicados. Antes de copiar e colar, pense se não faz sentido esse pedaço de código estar centralizado numa função.
 
-## **Status Codes**
 
-Abaixo, listamos os possíveis **_status codes_** esperados como resposta da API.
-
-```javascript
-// 200 (OK) = requisição bem sucedida
-// 201 (Created) = requisição bem sucedida e algo foi criado
-// 204 (No Content) = requisição bem sucedida, sem conteúdo no corpo da resposta
-// 400 (Bad Request) = o servidor não entendeu a requisição pois está com uma sintaxe/formato inválido
-// 401 (Unauthorized) = o usuário não está autenticado (logado)
-// 403 (Forbidden) = o usuário não tem permissão de acessar o recurso solicitado
-// 404 (Not Found) = o servidor não pode encontrar o recurso solicitado
-```
 
 ## **Endpoints**
 
@@ -150,34 +146,6 @@ Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
   - Criptografar a senha antes de persistir no banco de dados
   - Cadastrar o usuário no banco de dados
 
-#### **Exemplo de requisição**
-
-```javascript
-// POST /usuario
-{
-    "nome": "José",
-    "email": "jose@email.com",
-    "senha": "123456"
-}
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-    "id": 1,
-    "nome": "José",
-    "email": "jose@email.com"
-}
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Já existe usuário cadastrado com o e-mail informado."
-}
-```
 
 ### **Login do usuário**
 
@@ -186,15 +154,11 @@ Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
 Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
 
 - **Requisição**  
-  Sem parâmetros de rota ou de query.  
-  O corpo (body) deverá possuir um objeto com as seguintes propriedades (respeitando estes nomes):
-
   - email
   - senha
 
 - **Resposta**  
   Em caso de **sucesso**, o corpo (body) da resposta deverá possuir um objeto com a propriedade **token** que deverá possuir como valor o token de autenticação gerado e uma propriedade **usuario** que deverá possuir as informações do usuário autenticado, exceto a senha do usuário.  
-  Em caso de **falha na validação**, a resposta deverá possuir **_status code_** apropriado, e em seu corpo (body) deverá possuir um objeto com uma propriedade **mensagem** que deverá possuir como valor um texto explicando o motivo da falha.
 
 - **REQUISITOS OBRIGATÓRIOS**
 
@@ -205,42 +169,10 @@ Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
   - Validar e-mail e senha
   - Criar token de autenticação com id do usuário
 
-#### **Exemplo de requisição**
-
-```javascript
-// POST /login
-{
-    "email": "jose@email.com",
-    "senha": "123456"
-}
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-    "usuario": {
-        "id": 1,
-        "nome": "José",
-        "email": "jose@email.com"
-    },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjIzMjQ5NjIxLCJleHAiOjE2MjMyNzg0MjF9.KLR9t7m_JQJfpuRv9_8H2-XJ92TSjKhGPxJXVfX6wBI"
-}
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Usuário e/ou senha inválido(s)."
-}
-```
-
 ---
 
 ## **ATENÇÃO**: Todas as funcionalidades (endpoints) a seguir, a partir desse ponto, deverão exigir o token de autenticação do usuário logado, recebendo no header com o formato Bearer Token. Portanto, em cada funcionalidade será necessário validar o token informado.
 
----
 
 ### **Validações do token**
 
@@ -265,30 +197,7 @@ Essa é a rota que será chamada quando o usuario quiser obter os dados do seu p
   Em caso de **falha na validação**, a resposta deverá possuir **_status code_** apropriado, e em seu corpo (body) deverá possuir um objeto com uma propriedade **mensagem** que deverá possuir como valor um texto explicando o motivo da falha.  
   **Dica:** neste endpoint podemos fazer uso do status code 401 (Unauthorized).
 
-#### **Exemplo de requisição**
 
-```javascript
-// GET /usuario
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-    "id": 1,
-    "nome": "José",
-    "email": "jose@email.com"
-}
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Para acessar este recurso um token de autenticação válido deve ser enviado."
-}
-```
 
 ### **Atualizar usuário**
 
@@ -319,30 +228,6 @@ Essa é a rota que será chamada quando o usuário quiser realizar alterações 
   - Criptografar a senha antes de salvar no banco de dados
   - Atualizar as informações do usuário no banco de dados
 
-#### **Exemplo de requisição**
-
-```javascript
-// PUT /usuario
-{
-    "nome": "José de Abreu",
-    "email": "jose_abreu@email.com",
-    "senha": "j4321"
-}
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-// Sem conteúdo no corpo (body) da resposta
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "O e-mail informado já está sendo utilizado por outro usuário."
-}
-```
 
 ### **Listar categorias**
 
@@ -361,33 +246,6 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
 - **REQUISITOS OBRIGATÓRIOS**
   - O endpoint deverá responder com um array de todas as categorias cadastradas.
 
-#### **Exemplo de requisição**
-
-```javascript
-// GET /categoria
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-[
-  {
-    id: 1,
-    descricao: "Roupas",
-  },
-  {
-    id: 2,
-    descricao: "Mercado",
-  },
-];
-```
-
-```javascript
-// HTTP Status 200 / 201 / 204
-[];
-```
 
 ### **Listar transações do usuário logado**
 
@@ -408,45 +266,6 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
   - O usuário deverá ser identificado através do ID presente no token de validação
   - O endpoint deverá responder com um array de todas as transações associadas ao usuário. Caso não exista nenhuma transação associada ao usuário deverá responder com array vazio.
 
-#### **Exemplo de requisição**
-
-```javascript
-// GET /transacao
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-[
-  {
-    id: 1,
-    tipo: "saida",
-    descricao: "Sapato amarelo",
-    valor: 15800,
-    data: "2022-03-23T15:35:00.000Z",
-    usuario_id: 5,
-    categoria_id: 4,
-    categoria_nome: "Roupas",
-  },
-  {
-    id: 3,
-    tipo: "entrada",
-    descricao: "Salário",
-    valor: 300000,
-    data: "2022-03-24T15:30:00.000Z",
-    usuario_id: 5,
-    categoria_id: 6,
-    categoria_nome: "Salários",
-  },
-];
-```
-
-```javascript
-// HTTP Status 200 / 201 / 204
-[];
-```
 
 ### **Detalhar uma transação do usuário logado**
 
@@ -466,35 +285,6 @@ Essa é a rota que será chamada quando o usuario logado quiser obter uma das su
 - **REQUISITOS OBRIGATÓRIOS**
   - Validar se existe transação para o id enviado como parâmetro na rota e se esta transação pertence ao usuário logado.
 
-#### **Exemplo de requisição**
-
-```javascript
-// GET /transacao/2
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-    "id": 3,
-    "tipo": "entrada",
-    "descricao": "Salário",
-    "valor": 300000,
-    "data": "2022-03-24T15:30:00.000Z",
-    "usuario_id": 5,
-    "categoria_id": 6,
-    "categoria_nome": "Salários",
-}
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Transação não encontrada."
-}
-```
 
 ### **Cadastrar transação para o usuário logado**
 
@@ -528,41 +318,6 @@ Essa é a rota que será utilizada para cadastrar uma transação associada ao u
   - Validar se o tipo enviado no corpo (body) da requisição corresponde a palavra `entrada` ou `saida`, exatamente como descrito.
   - Cadastrar a transação associada ao usuário logado.
 
-#### **Exemplo de requisição**
-
-```javascript
-// POST /transacao
-{
-    "tipo": "entrada",
-    "descricao": "Salário",
-    "valor": 300000,
-    "data": "2022-03-24T15:30:00.000Z",
-    "categoria_id": 6
-}
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-    "id": 3,
-    "tipo": "entrada",
-    "descricao": "Salário",
-    "valor": 300000,
-    "data": "2022-03-24T15:30:00.000Z",
-    "usuario_id": 5,
-    "categoria_id": 6,
-    "categoria_nome": "Salários",
-}
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Todos os campos obrigatórios devem ser informados."
-}
-```
 
 ### **Atualizar transação do usuário logado**
 
@@ -597,32 +352,6 @@ Essa é a rota que será chamada quando o usuario logado quiser atualizar uma da
   - Validar se o tipo enviado no corpo (body) da requisição corresponde a palavra `entrada` ou `saida`, exatamente como descrito.
   - Atualizar a transação no banco de dados
 
-#### **Exemplo de requisição**
-
-```javascript
-// PUT /transacao/2
-{
-	"descricao": "Sapato amarelo",
-	"valor": 15800,
-	"data": "2022-03-23 12:35:00",
-	"categoria_id": 4,
-	"tipo": "saida"
-}
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-// Sem conteúdo no corpo (body) da resposta
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Todos os campos obrigatórios devem ser informados."
-}
-```
 
 ### **Excluir transação do usuário logado**
 
@@ -643,26 +372,6 @@ Essa é a rota que será chamada quando o usuario logado quiser excluir uma das 
   - Validar se existe transação para o id enviado como parâmetro na rota e se esta transação pertence ao usuário logado.
   - Excluir a transação no banco de dados.
 
-#### **Exemplo de requisição**
-
-```javascript
-// DELETE /transacao/2
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-// Sem conteúdo no corpo (body) da resposta
-```
-
-```javascript
-// HTTP Status 400 / 401 / 403 / 404
-{
-    "mensagem": "Transação não encontrada."
-}
-```
 
 ### **Obter extrato de transações**
 
@@ -684,23 +393,6 @@ Essa é a rota que será chamada quando o usuario logado quiser obter o extrato 
   - Em caso de não existir transações do tipo `saida` cadastradas para o usuário logado, o valor retornado no corpo (body) da resposta deverá ser 0.
 
 **Importante: A criação desta rota, no arquivo `rotas.js`, deverá acontecer antes da criação da rota de detalhamento de uma transação (`GET /transacao/:id`), caso contrário, esta rota nunca será possível ser acessada.**
-
-#### **Exemplo de requisição**
-
-```javascript
-// DELETE /transacao/extrato
-// Sem conteúdo no corpo (body) da requisição
-```
-
-#### **Exemplos de resposta**
-
-```javascript
-// HTTP Status 200 / 201 / 204
-{
-	"entrada": 300000,
-	"saida": 15800
-}
-```
 
 ---
 
@@ -727,54 +419,30 @@ Na funcionalidade de listagem de transações do usuário logado (**GET /transac
   - O parâmetro opcional do tipo query **filtro**, quando enviado, deverá ser sempre um array contendo a descrição de uma ou mais categorias.
   - O endpoint deverá responder com um array de todas as transações associadas ao usuário que sejam da categorias passadas no parâmetro query. Caso não exista nenhuma transação associada ao usuário deverá responder com array vazio.
 
-#### **Exemplo de requisição**
+## Comandos para rodar o projeto
+ > git clone link
 
-```javascript
-// GET /transacao?filtro[]=roupas&filtro[]=salários
-// Sem conteúdo no corpo (body) da requisição
-```
+ > cd desafio-backend-m02-b2bt05
 
-#### **Exemplos de resposta**
+ > npm install
 
-```javascript
-// HTTP Status 200 / 201 / 204
-[
-  {
-    id: 1,
-    tipo: "saida",
-    descricao: "Sapato amarelo",
-    valor: 15800,
-    data: "2022-03-23T15:35:00.000Z",
-    usuario_id: 5,
-    categoria_id: 4,
-    categoria_nome: "Roupas",
-  },
-  {
-    id: 3,
-    tipo: "entrada",
-    descricao: "Salário",
-    valor: 300000,
-    data: "2022-03-24T15:30:00.000Z",
-    usuario_id: 5,
-    categoria_id: 6,
-    categoria_nome: "Salários",
-  },
-];
-```
+ > npm run dev
 
-```javascript
-// HTTP Status 200 / 201 / 204
-[];
-```
+ > O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 
----
 
-Link do deploy da API somente para testes: [ link](https://desafio-backend-03-dindin.pedagogico.cubos.academy/)
+### 🛠 Tecnologias
 
-**Este link é somente para testes (ou seja, será possível realizar requisições a esta API através deste link)**
+As seguintes ferramentas foram usadas na construção do projeto:
 
----
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> 
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> 
 
-**LEMBRE-SE**: Feito é melhor que perfeito!!!
+
+
+## Autoras
+
 
 ###### tags: `back-end` `módulo 3` `nodeJS` `PostgreSQL` `API REST` `desafio`

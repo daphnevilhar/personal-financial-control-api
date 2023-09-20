@@ -23,9 +23,9 @@ const listTransactions = async (require, response) => {
             transactions.value,
             transactions.date,
             transactions.user_id,
-            transactions.categorie_id,
-            categories.description as categorie_name FROM transactions 
-            LEFT JOIN categories on transactions.categorie_id = categories.id 
+            transactions.category_id,
+            categories.description AS category_name FROM transactions 
+            LEFT JOIN categories ON transactions.category_id = category.id 
             WHERE transactions.user_id = $1
             AND categories.description = $2;`, [require.loggedUser.id, list[i]]);
                 for (let a = 0; a < filterTransactions.rowCount; a++) {

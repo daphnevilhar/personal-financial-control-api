@@ -17,7 +17,7 @@ CREATE TABLE transactions (
     description VARCHAR(255),
     value INTEGER NOT NULL,
     date TIMESTAMPTZ DEFAULT NOW(),
-    categorie_id INTEGER NOT NULL REFERENCES categories(id),
+    category_id INTEGER NOT NULL REFERENCES categories(id),
     user_id INTEGER NOT NULL REFERENCES users(id),
     type VARCHAR(50) NOT NULL
 );
