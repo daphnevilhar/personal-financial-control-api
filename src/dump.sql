@@ -17,7 +17,28 @@ CREATE TABLE transactions (
     description VARCHAR(255),
     value INTEGER NOT NULL,
     date TIMESTAMPTZ DEFAULT NOW(),
-    categories_id INTEGER NOT NULL REFERENCES categories(id),
+    categorie_id INTEGER NOT NULL REFERENCES categories(id),
     user_id INTEGER NOT NULL REFERENCES users(id),
     type VARCHAR(50) NOT NULL
 );
+
+INSERT INTO categories
+(description)
+VALUES
+('Alimentação'),
+('Assinaturas e Serviços'),
+('Casa'),
+('Mercado'),
+('Cuidados Pessoais'),
+('Educação'),
+('Família'),
+('Lazer'),
+('Pets'),
+('Presentes'),
+('Roupas'),
+('Saúde'),
+('Transporte'),
+('Salário'),
+('Vendas'),
+('Outras receitas'),
+('Outras despesas');

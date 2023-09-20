@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const verifyAuthentication = async (require, response, next) => {
     const { authorization } = require.headers;
 
-    if (!authorization) {
+    if (authorization === 'Bearer') {
         return response.status(400).json({ message: 'Unauthorized user' });
     }
 
