@@ -11,7 +11,7 @@ const registerUser = async (require, response) => {
         const user = await pool.query(`SELECT * FROM users WHERE email = $1;`, [email]);
 
         if (user.rowCount === 1) {
-            return response.status(400).json({ message: 'Email already exist' })
+            return response.status(400).json({ message: 'Email já existe' })
         }
 
         const passwordEncrypted = await bcrypt.hash(password, 10);

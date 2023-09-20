@@ -8,7 +8,7 @@ const deleteTransaction = async (require, response) => {
         const verifyTransactionId = await pool.query(`SELECT * FROM transactions WHERE id = $1 AND user_id = $2;`, [id, userId]);
 
         if (verifyTransactionId.rowCount === 0) {
-            return response.status(404).json({ message: `This transaction id or user id doesn't exist ` })
+            return response.status(404).json({ message: `Este id de transação não existe` })
         }
 
         await pool.query(`DELETE from transactions where id = $1`, [id]);
