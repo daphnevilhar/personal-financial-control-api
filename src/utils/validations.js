@@ -31,4 +31,4 @@ const validateType = async (type) => {
 module.exports = {
     validateFields,
     validateType
-}
+};

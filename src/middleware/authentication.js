@@ -6,7 +6,7 @@ const verifyAuthentication = async (require, response, next) => {
 
     if (authorization === 'Bearer') {
         return response.status(400).json({ message: 'Usuário não autenticado' });
-    }
+    };
 
     const token = authorization.split(' ')[1];
 
@@ -16,8 +16,8 @@ const verifyAuthentication = async (require, response, next) => {
         const user = await pool.query(`SELECT * FROM users WHERE id = $1;`, [id]);
 
         if (user.rowCount === 0) {
-            return response.status(400).json({ message: 'Usuário não autenticado' })
-        }
+            return response.status(400).json({ message: 'Usuário não autenticado' });
+        };
 
         const { password: _, ...formattedUser } = user.rows[0];
 
@@ -26,7 +26,7 @@ const verifyAuthentication = async (require, response, next) => {
         next()
     } catch (error) {
         return response.status(500).json(error.message);
-    }
+    };
 };
 
 module.exports = verifyAuthentication;

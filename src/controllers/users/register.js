@@ -1,18 +1,19 @@
 const pool = require('../../connection');
 const bcrypt = require('bcrypt');
-const validateFields = require('../../utils/validationsUser')
+const { validateFieldsEmailandPassword, validateFieldName } = require('../../utils/validationsUser')
 
 const registerUser = async (require, response) => {
     const { name, email, password } = require.body;
 
     try {
-        await validateFields(name, email, password);
+        await validateFieldName(name);
+        await validateFieldsEmailandPassword(email, password);
 
         const user = await pool.query(`SELECT * FROM users WHERE email = $1;`, [email]);
 
         if (user.rowCount === 1) {
-            return response.status(400).json({ message: 'Email já existe' })
-        }
+            return response.status(400).json({ message: 'Esse email já existe' })
+        };
 
         const passwordEncrypted = await bcrypt.hash(password, 10);
 
@@ -28,7 +29,7 @@ const registerUser = async (require, response) => {
         return response.status(error.statusCode).json({
             "mensage": error.message
         });
-    }
-}
+    };
+};
 
 module.exports = registerUser;
