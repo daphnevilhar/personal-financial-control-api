@@ -2,7 +2,7 @@ const pool = require('../../connection');
 
 const listTransactions = async (require, response) => {
     const { filter } = require.query;
-    console.log(filter)
+
     try {
         if (filter) {
             let list = [];

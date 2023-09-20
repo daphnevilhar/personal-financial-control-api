@@ -5,7 +5,8 @@ const deleteTransaction = async (require, response) => {
 
     try {
         const userId = require.loggedUser.id;
-        const verifyTransactionId = await pool.query(`SELECT * FROM transactions WHERE id = $1 AND user_id = $2;`, [id, userId]);
+        const verifyTransactionId = await pool.query(`SELECT * FROM transactions 
+        WHERE id = $1 AND user_id = $2;`, [id, userId]);
 
         if (verifyTransactionId.rowCount === 0) {
             return response.status(404).json({ message: `Este id de transação não existe` })

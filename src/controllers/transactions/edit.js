@@ -26,13 +26,13 @@ const editTransaction = async (require, response) => {
 
         await pool.query(`
         UPDATE transactions 
-        set 
+        SET 
         description = $1,
         value = $2,
         date = $3,
         category_id = $4,
         type = $5
-        where id = $6
+        WHERE id = $6
         RETURNING *;`, [description, value, date, category_id, type, id]);
 
         return response.status(204).json();
