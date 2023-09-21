@@ -17,7 +17,7 @@ const updateUser = async (require, response) => {
 
         return response.status(204).json();
     } catch (error) {
-        return response.status(error.statusCode).json({
+        return response.status(error.statusCode || 500).json({
             "mensage": error.message
         });
     };

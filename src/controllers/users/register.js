@@ -12,7 +12,7 @@ const registerUser = async (require, response) => {
         const user = await pool.query(`SELECT * FROM users WHERE email = $1;`, [email]);
 
         if (user.rowCount === 1) {
-            return response.status(400).json({ message: 'Esse email já existe' })
+            throw { statusCode: 400, message: "Esse email já existe" };
         };
 
         const passwordEncrypted = await bcrypt.hash(password, 10);
@@ -26,7 +26,7 @@ const registerUser = async (require, response) => {
 
         return response.status(201).json(formattedUser);
     } catch (error) {
-        return response.status(error.statusCode).json({
+        return response.status(error.statusCode || 500).json({
             "mensage": error.message
         });
     };

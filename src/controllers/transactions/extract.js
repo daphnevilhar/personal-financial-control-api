@@ -23,7 +23,9 @@ const extract = async (require, response) => {
 
         return response.status(200).json(message);
     } catch (error) {
-        return response.status(500).json(error.message);
+        return response.status(error.statusCode || 500).json({
+            "mensage": error.message
+        });
     };
 };
 

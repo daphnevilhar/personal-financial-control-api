@@ -10,7 +10,9 @@ const detailTransaction = async (require, response) => {
 
         return response.status(200).json(transaction.rows);
     } catch (error) {
-        return response.status(500).json(error.message);
+        return response.status(error.statusCode || 500).json({
+            "mensage": error.message
+        });
     };
 };
 
