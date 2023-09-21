@@ -1,8 +1,4 @@
-const validateFields = async (name, email, password) => {
-
-    if (!name) {
-        throw { statusCode: 400, message: "O nome é obrigatório" };
-    };
+const validateFieldsEmailandPassword = async (email, password) => {
 
     if (!email) {
         throw { statusCode: 400, message: 'O email é obrigatório' };
@@ -13,4 +9,14 @@ const validateFields = async (name, email, password) => {
     };
 };
 
-module.exports = validateFields;
+const validateFieldName = async (name) => {
+
+    if (!name) {
+        throw { statusCode: 400, message: "O nome é obrigatório" };
+    };
+};
+
+module.exports = {
+    validateFieldsEmailandPassword,
+    validateFieldName
+};

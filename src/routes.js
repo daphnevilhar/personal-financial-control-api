@@ -22,8 +22,8 @@ routes.use(verifyAuthentication);
 routes.get('/user', detailUser);
 routes.put('/user', updateUser);
 
-routes.get('/categorie', listCategories);
-routes.get('/transaction', listTransactions);
+routes.get('/categories', listCategories);
+routes.get('/transactions', listTransactions);
 
 routes.get('/transaction/extract', extract)
 

@@ -23,7 +23,7 @@ const validateType = async (type) => {
         throw { statusCode: 400, message: 'O tipo é obrigatório' };
     };
 
-    if (type !== "entrada" && type !== "saida") {
+    if (type.toLowerCase() !== "entrada" && type.toLowerCase() !== "saida") {
         throw { statusCode: 400, message: 'O tipo de transação deve ser entrada ou saida' };
     };
 };
@@ -31,4 +31,4 @@ const validateType = async (type) => {
 module.exports = {
     validateFields,
     validateType
-}
+};
