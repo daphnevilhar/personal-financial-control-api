@@ -16,9 +16,9 @@ const registerTransaction = async (require, response) => {
 
         const transaction = await pool.query(`
         INSERT INTO transactions
-        (description, value, user_id, category_id, type)
+        (description, value, date, user_id, category_id, type)
         VALUES
-        ($1, $2, $3, $4, $5) RETURNING *;`, [description, value, userId, category_id, type.toLowerCase()]);
+        ($1, $2, $3, $4, $5, $6) RETURNING *;`, [description, value, date, userId, category_id, type.toLowerCase()]);
 
         const category = await pool.query(`select description from categories where id = $1`, [category_id]);
         const categoryDescription = category.rows[0].description;

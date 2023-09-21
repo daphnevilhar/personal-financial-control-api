@@ -16,7 +16,7 @@ CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     description VARCHAR(255),
     value INTEGER NOT NULL,
-    date TIMESTAMPTZ DEFAULT NOW(),
+    date TIMESTAMPTZ NOT NULL,
     category_id INTEGER NOT NULL REFERENCES categories(id),
     user_id INTEGER NOT NULL REFERENCES users(id),
     type VARCHAR(50) NOT NULL
