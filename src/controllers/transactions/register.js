@@ -24,7 +24,7 @@ const registerTransaction = async (require, response) => {
         const categoryDescription = category.rows[0].description;
         transaction.rows[0].category_name = categoryDescription;
 
-        return response.status(200).json(transaction.rows);
+        return response.status(201).json(transaction.rows);
     } catch (error) {
         return response.status(error.statusCode || 500).json({
             "mensage": error.message
