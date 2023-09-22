@@ -8,7 +8,7 @@ const verifyAuthentication = async (require, response, next) => {
 
     try {
         if (authorization === 'Bearer') {
-            throw { statusCode: 400, message: "Usuário não autenticado" };
+            throw { statusCode: 401, message: "Usuário não autenticado" };
         };
 
         const { id } = jwt.verify(token, 'hJXmWg732ad7');
@@ -16,7 +16,7 @@ const verifyAuthentication = async (require, response, next) => {
         const user = await pool.query(`SELECT * FROM users WHERE id = $1;`, [id]);
 
         if (user.rowCount === 0) {
-            throw { statusCode: 400, message: "Usuário não autenticado" };
+            throw { statusCode: 401, message: "Usuário não autenticado" };
         };
 
         const { password: _, ...formattedUser } = user.rows[0];
