@@ -12,13 +12,13 @@ const login = async (require, response) => {
         const user = await pool.query(`SELECT * FROM users WHERE email = $1;`, [email]);
 
         if (user.rowCount === 0) {
-            throw { statusCode: 400, message: "Email ou senha inválido" };
+            throw { statusCode: 401, message: "Email ou senha inválido" };
         };
 
         const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
         if (!validPassword) {
-            throw { statusCode: 400, message: "Email ou senha inválido" };
+            throw { statusCode: 401, message: "Email ou senha inválido" };
         };
 
         const token = jwt.sign({ id: user.rows[0].id }, 'hJXmWg732ad7', { expiresIn: '8h' });
